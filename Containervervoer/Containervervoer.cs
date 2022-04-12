@@ -12,6 +12,15 @@ namespace Containervervoer
 {
     public partial class Containervervoer : Form
     {
+        int aant_normaal;
+        int aant_waardevol;
+        int aant_gekoeld;
+        int aant_beide;
+        int aant_leeg;
+        int hoeveelheid;
+        int hoogte;
+        int breedte;
+
         public Containervervoer()
         {
             InitializeComponent();
