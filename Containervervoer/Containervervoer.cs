@@ -16,5 +16,10 @@ namespace Containervervoer
         {
             InitializeComponent();
         }
+
+        private void Containervervoer_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Container.cs" />
     <Compile Include="Containervervoer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +55,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schip.cs" />
     <EmbeddedResource Include="Containervervoer.resx">
       <DependentUpon>Containervervoer.cs</DependentUpon>
     </EmbeddedResource>

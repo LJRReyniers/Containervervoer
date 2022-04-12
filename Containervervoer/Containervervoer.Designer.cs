@@ -38,6 +38,7 @@ namespace Containervervoer
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "Containervervoer";
             this.Text = "Containervervoer";
+            this.Load += new System.EventHandler(this.Containervervoer_Load);
             this.ResumeLayout(false);
 
         }
