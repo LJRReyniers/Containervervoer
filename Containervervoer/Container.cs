@@ -16,9 +16,16 @@ namespace Containervervoer
         bool waardevol;
         bool gekoeld;
         bool inhoud;
-        public Container(int gewicht, int soort)
+        public Container(int soort)
         {
-
+            if (soort == 1)
+            {
+                gewicht = 30000;
+            }
+            else
+            {
+                gewicht = 4000;
+            }
         }
     }
 }
