@@ -8,34 +8,34 @@ namespace Containervervoer
 {
     class Schip
     {
-        int gewicht;
-        int hoogte;
-        int breedte;
-        int tot_lading;
-        int max_gewicht;
-        int hoeveelheid;
-        int percent_lading;
-        public void Max_gewicht(int hoogte, int breedte)
+        int weight;
+        int height;
+        int width;
+        int tot_load;
+        int max_weight;
+        int amount;
+        int percent_load;
+        public void Max_weight(int height, int width)
         {
-            max_gewicht = hoogte * breedte * 30000;
+            max_weight = height * width * 30000;
         }
-        public void Tot_hoeveelheid(int aant_normaal, int aant_waardevol, int aant_gekoeld, int aant_beide)
+        public void Tot_amount(int aant_normal, int aant_valuable, int aant_cool)
         {
-            hoeveelheid = aant_normaal + aant_waardevol + aant_gekoeld + aant_beide;
+            amount = aant_normal + aant_valuable + aant_cool;
         }
-        public void Tot_lading(int hoeveelheid, int aant_leeg)
+        public void Tot_load(int amount, int aant_empty)
         {
-            tot_lading = hoeveelheid + aant_leeg;
+            tot_load = amount + aant_empty;
         }
-        public void Percent_lading(int tot_lading)
+        public void Percent_load(int tot_load)
         {
-            percent_lading = tot_lading / 100 * 20;
+            percent_load = tot_load / 100 * 20;
         }
-        public void Get_rij()
+        public void Get_row()
         {
 
         }
-        public void Get_indeling()
+        public void Get_layout()
         {
 
         }
