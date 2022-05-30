@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Containervervoer
 {
-    class Container
+    public class Container
     {
         int weight;
         int weight_empty = 4000;
@@ -15,10 +15,17 @@ namespace Containervervoer
         int type;
         bool valuable;
         bool cool;
-        bool content;
         public Container(int type)
         {
             if (type == 1)
+            {
+                weight = 30000;
+            }
+            if (type == 2)
+            {
+                weight = 30000;
+            }
+            if (type == 3)
             {
                 weight = 30000;
             }
@@ -26,6 +33,14 @@ namespace Containervervoer
             {
                 weight = 4000;
             }
+        }
+        public int Get_weight()
+        {
+            return weight;
+        }
+        public int Get_type()
+        {
+            return type;
         }
     }
 }
