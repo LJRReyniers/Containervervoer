@@ -13,17 +13,17 @@ namespace Containervervoer
 
         public int Type { get { return this.type; } set { this.type = value; } }
 
-        public Container(int type)
+        public Container()
         {
-            if (type == 1)
+            if (Type == 1)
             {
                 weight = 30000;
             }
-            if (type == 2)
+            if (Type == 2)
             {
                 weight = 30000;
             }
-            if (type == 3)
+            if (Type == 3)
             {
                 weight = 30000;
             }

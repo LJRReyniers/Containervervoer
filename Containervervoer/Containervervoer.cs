@@ -12,7 +12,7 @@ namespace Containervervoer
 {
     public partial class Containervervoer : Form
     {
-        Layer layer = new Layer();
+        Sort sort = new Sort();
 
         public Containervervoer()
         {
@@ -24,9 +24,10 @@ namespace Containervervoer
 
         }
 
-        private void button1_Click(object sender, EventArgs e, Sort sort)
+        private void button1_Click(object sender, EventArgs e)
         {
-            sort.Set_row(factory, ship, container);
+            Console.WriteLine(sort.Layout());
+            sort.Set_row();
             if (sort.Visualise_ship == true)
             {
                 pictureBox1.Image = Properties.Resources.ship;

@@ -11,16 +11,20 @@ namespace Containervervoer
         // sort
         List<Container> containers = new List<Container>();
         List<Container> ToBe_sorted = new List<Container>();
+        Factory f = new Factory();
+        Ship s = new Ship();
+        Container c = new Container();
 
         // place
         List<Row> rows = new List<Row>();
+        List<Layer> layers = new List<Layer>();
         private bool visualise_ship = false;
 
         // place
         public bool Visualise_ship { get { return this.visualise_ship; } set { this.visualise_ship = value; } }
-        public bool Length(Ship ship)
+        public bool Length()
         {
-            if (rows.Count < ship.Length)
+            if (rows.Count < s.Length)
             {
                 return true;
             }
@@ -30,49 +34,50 @@ namespace Containervervoer
             }
         }
 
-        public List<Layer> Layout()
+        public List<Container> Layout()
         {
             // return list( layers( rows( containers ) ) )
+            return ToBe_sorted;
         }
-        public void Set_row(Factory factory, Ship ship, Container container)
+        public void Set_row()
         {
-            Get_containers(factory);
-            if (Get_fit(ship) == false)
+            Get_containers();
+            if (Get_fit() == false)
             {
-                Get_containers(factory);
+                Get_containers();
             }
             else
             {
-                Sort_containers(container);
+                Sort_containers();
 
-                if (container.Type == 1)
+                if (c.Type == 1)
                 {
-                    Check(factory, ship, container);
+                    Check();
                 }
-                else if (container.Type == 2)
+                else if (c.Type == 2)
                 {
-                    Check(factory, ship, container);
+                    Check();
                 }
-                else if (container.Type == 3)
+                else if (c.Type == 3)
                 {
-                    Check(factory, ship, container);
+                    Check();
                 }
-                else if (container.Type != 1 && container.Type != 2 && container.Type != 3)
+                else if (c.Type != 1 && c.Type != 2 && c.Type != 3)
                 {
-                    Check(factory, ship, container);
+                    Check();
                 }
             }
         }
-        public void Check(Factory factory, Ship ship, Container container)
+        public void Check()
         {
-            if (Width(ship) == true)
+            if (Width() == true)
             {
-                containers.Add(container);
+                containers.Add(c);
                 if (Cool() == false && Normal() == false && Empty() == false)
                 {
                     if (Valuable() == true)
                     {
-                        containers.Add(container);
+                        containers.Add(c);
                     }
                     else if (Valuable() == false)
                     {
@@ -81,12 +86,12 @@ namespace Containervervoer
                 }
                 else
                 {
-                    Set_row(factory, ship, container);
+                    Set_row();
                 }
             }
-            else if (Width(ship) == false)
+            else if (Width() == false)
             {
-                if (Length(ship) == true)
+                if (Length() == true)
                 {
                     Row row = new Row();
 
@@ -94,7 +99,7 @@ namespace Containervervoer
                     {
                         if (Valuable() == true)
                         {
-                            containers.Add(container);
+                            containers.Add(c);
                         }
                         else if (Valuable() == false)
                         {
@@ -103,10 +108,10 @@ namespace Containervervoer
                     }
                     else
                     {
-                        Set_row(factory, ship, container);
+                        Set_row();
                     }
                 }
-                else if (Length(ship) == false)
+                else if (Length() == false)
                 {
                     Layer layer = new Layer();
 
@@ -114,7 +119,7 @@ namespace Containervervoer
                     {
                         if (Valuable() == true)
                         {
-                            containers.Add(container);
+                            containers.Add(c);
                         }
                         else if (Valuable() == false)
                         {
@@ -123,21 +128,21 @@ namespace Containervervoer
                     }
                     else
                     {
-                        Set_row(factory, ship, container);
+                        Set_row();
                     }
                 }
             }
         }
 
         // sort
-        public void Get_containers(Factory factory)
+        public void Get_containers()
         {
-            ToBe_sorted = factory.Get_random_containers();
+            ToBe_sorted = f.Get_random_containers();
         }
 
-        public bool Get_fit(Ship ship)
+        public bool Get_fit()
         {
-            if (containers.Count() > ship.Max_containers())
+            if (containers.Count() > s.Max_containers())
             {
                 containers.Clear();
                 ToBe_sorted.Clear();
@@ -149,31 +154,31 @@ namespace Containervervoer
             }
         }
 
-        public List<Container> Sort_containers(Container container)
+        public List<Container> Sort_containers()
         {
             foreach (Container cool in ToBe_sorted)
             {
-                if (container.Type == 1)
+                if (c.Type == 1)
                 {
-                    containers.Add(container);
+                    containers.Add(c);
                 }
                 foreach (Container normal in ToBe_sorted)
                 {
-                    if (container.Type == 2)
+                    if (c.Type == 2)
                     {
-                        containers.Add(container);
+                        containers.Add(c);
                     }
                     foreach (Container empty in ToBe_sorted)
                     {
-                        if (container.Type != 1 && container.Type != 2 && container.Type != 3)
+                        if (c.Type != 1 && c.Type != 2 && c.Type != 3)
                         {
-                            containers.Add(container);
+                            containers.Add(c);
                         }
                         foreach (Container valuable in ToBe_sorted)
                         {
-                            if (container.Type == 3)
+                            if (c.Type == 3)
                             {
-                                containers.Add(container);
+                                containers.Add(c);
                             }
                         }
                     }
@@ -187,9 +192,9 @@ namespace Containervervoer
 
         // 
 
-        public bool Width(Ship ship)
+        public bool Width()
         {
-            if (containers.Count < ship.Width)
+            if (containers.Count < s.Width)
             {
                 return true;
             }

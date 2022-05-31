@@ -9,5 +9,10 @@ namespace Containervervoer
     public class Layer
     {
         List<Row> rows = new List<Row>();
+
+        public Layer()
+        {
+
+        }
     }
 }
