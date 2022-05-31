@@ -30,11 +30,11 @@ namespace Containervervoer
             sort.Set_row();
             if (sort.Visualise_ship == true)
             {
-                pictureBox1.Image = Properties.Resources.ship;
+                pictureBox1.BackgroundImage = Properties.Resources.ship;
             }
             else
             {
-                pictureBox1.Image = Properties.Resources.wrong;
+                pictureBox1.BackgroundImage = Properties.Resources.kruis;
             }
         }
     }
