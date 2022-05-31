@@ -12,23 +12,29 @@ namespace Containervervoer
 {
     public partial class Containervervoer : Form
     {
-        int aant_normaal;
-        int aant_waardevol;
-        int aant_gekoeld;
-        int aant_beide;
-        int aant_leeg;
-        int hoeveelheid;
-        int hoogte;
-        int breedte;
+        Layer layer = new Layer();
 
         public Containervervoer()
         {
             InitializeComponent();
         }
-
+        
         private void Containervervoer_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e, Sort sort)
+        {
+            sort.Set_row(factory, ship, container);
+            if (sort.Visualise_ship == true)
+            {
+                pictureBox1.Image = Properties.Resources.ship;
+            }
+            else
+            {
+                pictureBox1.Image = Properties.Resources.wrong;
+            }
         }
     }
 }

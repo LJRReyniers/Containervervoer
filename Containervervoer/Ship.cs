@@ -10,19 +10,24 @@ namespace Containervervoer
     {
         List<Layer> layers = new List<Layer>();
 
-        int weight;
-        int height;
-        int width;
-        int length;
+        private int weight;
+        private int height = 3;
+        private int width = 5;
+        private int length = 5;
         int tot_load;
         int max_weight;
         int amount;
         int percent_load;
         int max_containers;
 
-        public Ship(int height, int width, int length)
+        public int Weight { get { return this.weight; } set { this.weight = value; } }
+        public int Height { get { return this.height; } set { this.height = value; } }
+        public int Width { get { return this.width; } set { this.width = value; } }
+        public int Length { get { return this.length; } set { this.length = value; } }
+
+        public Ship()
         {
-            max_containers = height * width * length;
+            max_containers = Height * Width * Length;
         }
 
         public int Max_containers()

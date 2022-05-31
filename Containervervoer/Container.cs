@@ -9,12 +9,10 @@ namespace Containervervoer
     public class Container
     {
         int weight;
-        int weight_empty = 4000;
-        int weight_full = 30000;
-        int weight_top_max = 120000;
-        int type;
-        bool valuable;
-        bool cool;
+        private int type;
+
+        public int Type { get { return this.type; } set { this.type = value; } }
+
         public Container(int type)
         {
             if (type == 1)
