@@ -153,6 +153,12 @@ namespace Containervervoer
                 return true;
             }
         }
+        public List<Container> Containers(int t)
+        {
+            c.Type = t;
+            containers.Add(c);
+            return containers;
+        }
 
         public List<Container> Sort_containers()
         {
