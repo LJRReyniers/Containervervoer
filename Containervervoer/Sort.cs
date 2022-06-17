@@ -11,6 +11,7 @@ namespace Containervervoer
         // sort
         List<Container> containers = new List<Container>();
         List<Container> ToBe_sorted = new List<Container>();
+        List<Container> sorted = new List<Container>();
         Factory f = new Factory();
         Ship s = new Ship();
         Container c = new Container();
@@ -56,17 +57,24 @@ namespace Containervervoer
         {
             if (Width() == true)
             {
-                containers.Add(c);
-                if (Cool() == false && Normal() == false && Empty() == false)
+                for (int i = 0; i < sorted.Count(); i++)
                 {
-                    if (Valuable() == true)
+                    if (sorted.Count() != 0)
                     {
-                        containers.Add(c);
+                        containers.Add(sorted[i]);
+                        if (Cool(i) == false && Normal(i) == false && Empty(i) == false)
+                        {
+                            if (Valuable(i) == true)
+                            {
+                                containers.Add(sorted[i]);
+                            }
+                            else if (Valuable(i) == false)
+                            {
+                                Visualise_ship = true;
+                            }
+                        }
                     }
-                    else if (Valuable() == false)
-                    {
-                        Visualise_ship = true;
-                    }
+                    Visualise_ship = true;
                 }
             }
             else if (Width() == false)
@@ -75,32 +83,48 @@ namespace Containervervoer
                 {
                     Row row = new Row();
 
-                    if (Cool() == false && Normal() == false && Empty() == false)
+                    for (int i = 0; i < sorted.Count(); i++)
                     {
-                        if (Valuable() == true)
+                        if (sorted.Count() != 0)
                         {
-                            containers.Add(c);
+                            containers.Add(sorted[i]);
+                            if (Cool(i) == false && Normal(i) == false && Empty(i) == false)
+                            {
+                                if (Valuable(i) == true)
+                                {
+                                    containers.Add(sorted[i]);
+                                }
+                                else if (Valuable(i) == false)
+                                {
+                                    Visualise_ship = true;
+                                }
+                            }
                         }
-                        else if (Valuable() == false)
-                        {
-                            Visualise_ship = true;
-                        }
+                        Visualise_ship = true;
                     }
                 }
                 else if (Length() == false)
                 {
                     Layer layer = new Layer();
 
-                    if (Cool() == false && Normal() == false && Empty() == false)
+                    for (int i = 0; i < sorted.Count(); i++)
                     {
-                        if (Valuable() == true)
+                        if (sorted.Count() != 0)
                         {
-                            containers.Add(c);
+                            containers.Add(sorted[i]);
+                            if (Cool(i) == false && Normal(i) == false && Empty(i) == false)
+                            {
+                                if (Valuable(i) == true)
+                                {
+                                    containers.Add(sorted[i]);
+                                }
+                                else if (Valuable(i) == false)
+                                {
+                                    Visualise_ship = true;
+                                }
+                            }
                         }
-                        else if (Valuable() == false)
-                        {
-                            Visualise_ship = true;
-                        }
+                        Visualise_ship = true;
                     }
                 }
             }
@@ -118,12 +142,14 @@ namespace Containervervoer
             {
                 containers.Clear();
                 ToBe_sorted.Clear();
+                sorted.Clear();
                 return false;
             }
             else if (ToBe_sorted.Count == 0)
             {
                 containers.Clear();
                 ToBe_sorted.Clear();
+                sorted.Clear();
                 return false;
             }
             else
@@ -145,27 +171,27 @@ namespace Containervervoer
                     if (ToBe_sorted[i].Type == 1 && ToBe_sorted.Count() != 0)
                     {
                         c.Type = 1;
-                        containers.Add(c);
+                        sorted.Add(c);
                     }
                     if (ToBe_sorted[i].Type == 2 && ToBe_sorted.Count() != 0)
                     {
                         c.Type = 2;
-                        containers.Add(c);
+                        sorted.Add(c);
                     }
                     if (ToBe_sorted[i].Type != 1 && ToBe_sorted[i].Type != 2 && ToBe_sorted[i].Type != 3 && ToBe_sorted.Count() != 0)
                     {
-                        containers.Add(c);
+                        sorted.Add(c);
                     }
                     if (ToBe_sorted[i].Type == 3 && ToBe_sorted.Count() != 0)
                     {
                         c.Type = 3;
-                        containers.Add(c);
+                        sorted.Add(c);
                     }
 
                 }
             
             ToBe_sorted.Clear();
-            return containers;
+            return sorted;
         }
 
         //
@@ -174,7 +200,7 @@ namespace Containervervoer
 
         public bool Width()
         {
-            if (containers.Count < s.Width)
+            if (sorted.Count < s.Width)
             {
                 return true;
             }
@@ -183,9 +209,9 @@ namespace Containervervoer
                 return false;
             }
         }
-        public bool Cool()
+        public bool Cool(int i)
         {
-            if (Convert.ToInt32(containers.First().Type) == 1)
+            if (Convert.ToInt32(sorted[i].Type) == 1)
             {
                 return true;
             }
@@ -194,9 +220,9 @@ namespace Containervervoer
                 return false;
             }
         }
-        public bool Valuable()
+        public bool Valuable(int i)
         {
-            if (Convert.ToInt32(containers.First().Type) == 3)
+            if (Convert.ToInt32(sorted[i].Type) == 3)
             {
                 return true;
             }
@@ -205,9 +231,9 @@ namespace Containervervoer
                 return false;
             }
         }
-        public bool Normal()
+        public bool Normal(int i)
         {
-            if (Convert.ToInt32(containers.First().Type) == 2)
+            if (Convert.ToInt32(sorted[i].Type) == 2)
             {
                 return true;
             }
@@ -216,9 +242,9 @@ namespace Containervervoer
                 return false;
             }
         }
-        public bool Empty()
+        public bool Empty(int i)
         {
-            if (Convert.ToInt32(containers.First().Type) != 1 && Convert.ToInt32(containers.First().Type) != 2 && Convert.ToInt32(containers.First().Type) != 3)
+            if (Convert.ToInt32(sorted[i].Type) != 1 && Convert.ToInt32(sorted[i].Type) != 2 && Convert.ToInt32(sorted[i].Type) != 3)
             {
                 return true;
             }
