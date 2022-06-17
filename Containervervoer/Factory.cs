@@ -15,7 +15,7 @@ namespace Containervervoer
 
         public Container Get_random_container()
         {
-            int r = t.Next(0, 3);
+            int r = t.Next(1, 3);
             Container container = new Container();
             container.Type = r;
             return container;
@@ -24,7 +24,7 @@ namespace Containervervoer
         {
             List<Container> containers = new List<Container>();
 
-            int r = t.Next(0, 3);
+            int r = t.Next(1, 3);
             int c = n.Next(0, 10);
             while (c > 0)
             {

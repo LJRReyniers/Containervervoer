@@ -49,26 +49,10 @@ namespace Containervervoer
             else
             {
                 Sort_containers();
-
-                if (c.Type == 1)
-                {
-                    Check();
-                }
-                else if (c.Type == 2)
-                {
-                    Check();
-                }
-                else if (c.Type == 3)
-                {
-                    Check();
-                }
-                else if (c.Type != 1 && c.Type != 2 && c.Type != 3)
-                {
-                    Check();
-                }
+                Check();
             }
         }
-        public void Check()
+        public void Check() //
         {
             if (Width() == true)
             {
@@ -83,10 +67,6 @@ namespace Containervervoer
                     {
                         Visualise_ship = true;
                     }
-                }
-                else
-                {
-                    Set_row();
                 }
             }
             else if (Width() == false)
@@ -106,10 +86,6 @@ namespace Containervervoer
                             Visualise_ship = true;
                         }
                     }
-                    else
-                    {
-                        Set_row();
-                    }
                 }
                 else if (Length() == false)
                 {
@@ -126,10 +102,6 @@ namespace Containervervoer
                             Visualise_ship = true;
                         }
                     }
-                    else
-                    {
-                        Set_row();
-                    }
                 }
             }
         }
@@ -142,7 +114,13 @@ namespace Containervervoer
 
         public bool Get_fit()
         {
-            if (containers.Count() > s.Max_containers())
+            if (ToBe_sorted.Count() > s.Max_containers())
+            {
+                containers.Clear();
+                ToBe_sorted.Clear();
+                return false;
+            }
+            else if (ToBe_sorted.Count == 0)
             {
                 containers.Clear();
                 ToBe_sorted.Clear();
@@ -162,34 +140,30 @@ namespace Containervervoer
 
         public List<Container> Sort_containers()
         {
-            foreach (Container cool in ToBe_sorted)
-            {
-                if (c.Type == 1)
+                for (int i = 0; i < ToBe_sorted.Count(); i++)
                 {
-                    containers.Add(c);
-                }
-                foreach (Container normal in ToBe_sorted)
-                {
-                    if (c.Type == 2)
+                    if (ToBe_sorted[i].Type == 1 && ToBe_sorted.Count() != 0)
+                    {
+                        c.Type = 1;
+                        containers.Add(c);
+                    }
+                    if (ToBe_sorted[i].Type == 2 && ToBe_sorted.Count() != 0)
+                    {
+                        c.Type = 2;
+                        containers.Add(c);
+                    }
+                    if (ToBe_sorted[i].Type != 1 && ToBe_sorted[i].Type != 2 && ToBe_sorted[i].Type != 3 && ToBe_sorted.Count() != 0)
                     {
                         containers.Add(c);
                     }
-                    foreach (Container empty in ToBe_sorted)
+                    if (ToBe_sorted[i].Type == 3 && ToBe_sorted.Count() != 0)
                     {
-                        if (c.Type != 1 && c.Type != 2 && c.Type != 3)
-                        {
-                            containers.Add(c);
-                        }
-                        foreach (Container valuable in ToBe_sorted)
-                        {
-                            if (c.Type == 3)
-                            {
-                                containers.Add(c);
-                            }
-                        }
+                        c.Type = 3;
+                        containers.Add(c);
                     }
+
                 }
-            }
+            
             ToBe_sorted.Clear();
             return containers;
         }
