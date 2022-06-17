@@ -43,7 +43,7 @@ namespace Containervervoer.Tests
             _container.Type = 1;
             List<Container> list = new List<Container>();
             list = _sort.Containers(1);
-            bool a = _sort.Cool();
+            bool a = _sort.Cool(0);
             // act
             list.Clear();
             // assert
@@ -58,7 +58,7 @@ namespace Containervervoer.Tests
             _container.Type = 2;
             List<Container> list = new List<Container>();
             list = _sort.Containers(2);
-            bool a = _sort.Normal();
+            bool a = _sort.Normal(0);
             // act
             list.Clear();
             // assert
@@ -73,7 +73,7 @@ namespace Containervervoer.Tests
             _container.Type = 3;
             List<Container> list = new List<Container>();
             list = _sort.Containers(3);
-            bool a = _sort.Valuable();
+            bool a = _sort.Valuable(0);
             // act
             list.Clear();
             // assert
@@ -88,7 +88,7 @@ namespace Containervervoer.Tests
             _container.Type = 4;
             List<Container> list = new List<Container>();
             list = _sort.Containers(4);
-            bool a = _sort.Empty();
+            bool a = _sort.Empty(0);
             // act
             list.Clear();
             // assert
@@ -121,6 +121,10 @@ namespace Containervervoer.Tests
         {
             //arrange
             List<Container> containers = new List<Container>();
+            var z = _sort.Containers(3);
+            _container = new Container();
+            _container.Type = 3;
+            containers.Add(_container);
             _sort.Check();
             bool a = _sort.Visualise_ship;
             // act

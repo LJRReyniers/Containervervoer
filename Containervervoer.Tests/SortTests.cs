@@ -49,7 +49,7 @@ namespace Containervervoer.Tests
         {
             // arrange
             List<Container> list = new List<Container>();
-            list = _sort.Sort_containers();
+            list = _sort.Get_containers();
             bool a = _sort.Get_fit();
             // act
             // assert

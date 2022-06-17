@@ -131,9 +131,10 @@ namespace Containervervoer
         }
 
         // sort
-        public void Get_containers()
+        public List<Container> Get_containers()
         {
             ToBe_sorted = f.Get_random_containers();
+            return ToBe_sorted;
         }
 
         public bool Get_fit()
@@ -160,8 +161,8 @@ namespace Containervervoer
         public List<Container> Containers(int t)
         {
             c.Type = t;
-            containers.Add(c);
-            return containers;
+            sorted.Add(c);
+            return sorted;
         }
 
         public List<Container> Sort_containers()
