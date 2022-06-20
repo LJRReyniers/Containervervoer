@@ -131,8 +131,6 @@ namespace Containervervoer.Tests
             // assert
             Assert.IsNotNull(containers);
             Assert.AreEqual(a, true);
-
-            // test fails omdat Check() en Set_row() elkaar in een loop aanroepen, zonder bij visualise_ship te komen
         }
     }
 }

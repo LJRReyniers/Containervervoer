@@ -15,6 +15,7 @@ namespace Containervervoer
         Factory f = new Factory();
         Ship s = new Ship();
         Container c = new Container();
+        int weight_containers = 0;
 
         // place
         List<Row> rows = new List<Row>();
@@ -43,7 +44,7 @@ namespace Containervervoer
         public void Set_row()
         {
             Get_containers();
-            if (Get_fit() == false)
+            if (Get_fit() == false || Fifty_Max_Weight() == false)
             {
                 Get_containers();
             }
@@ -199,6 +200,21 @@ namespace Containervervoer
 
         // 
 
+        public bool Fifty_Max_Weight()
+        {
+            for (int i = 0; i < sorted.Count(); i++)
+            {
+                weight_containers = weight_containers + sorted[i].Get_weight();
+            }
+            if (s.Max_weight(s.Height, s.Width) * 0.5 < weight_containers)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         public bool Width()
         {
             if (sorted.Count < s.Width)
